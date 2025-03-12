@@ -1,17 +1,19 @@
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
+---
+import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-    <h1>Astro BLOG</h1>
-    <h2>Chatty chat chat mcchat</h2>
-  </body>
-</html>
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+const pageTitle = "blog";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h2>My awesome BLOG subtitle</h2>
+  <ul>
+    <li><a href="/posts/post1/">Posty 1</a></li>
+    <li><a href="/posts/post2/">Posty 2</a></li>
+    <li><a href="/posts/post3/">Posty 3</a></li>
+    <li><a href="/posts/post4/">Posty 4</a></li>
+  </ul>
+</BaseLayout>
