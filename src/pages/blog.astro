@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import BlogPost from "../components/BlogPost.astro";
+const allPosts = Object.values(
+  import.meta.glob("./posts/*.md", { eager: true })
+);
 
 const pageTitle = "blog";
 ---
@@ -11,9 +12,10 @@ const pageTitle = "blog";
 <BaseLayout pageTitle={pageTitle}>
   <h2>My awesome BLOG subtitle</h2>
   <ul>
-    <li><a href="/posts/post1/">Posty 1</a></li>
-    <li><a href="/posts/post2/">Posty 2</a></li>
-    <li><a href="/posts/post3/">Posty 3</a></li>
-    <li><a href="/posts/post4/">Posty 4</a></li>
+    {
+      allPosts.map((post: any) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
   </ul>
 </BaseLayout>
